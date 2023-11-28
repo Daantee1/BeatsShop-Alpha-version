@@ -1,0 +1,73 @@
+<ng-container *ngIf="!isLoggedIn">
+<div class="navbar bg-neutral-focus ">
+    <div class="navbar-start sticky ">
+      <div class="dropdown">
+        <label tabindex="0" class="btn btn-ghost btn-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+        </label>
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow font-mono rounded-box w-52 bg-neutral-focus text-white"  >
+          <li><a routerLink="/Home">Strona główna</a></li>
+          <li><a routerLink="/AboutMe" >O mnie</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="navbar-center" >
+      
+      <a class="btn btn-ghost normal-case text-xl text-white font-mono" [routerLink]="'/Home'">
+        <img src="./assets/icon-navbar.png" class="w-10 h-10" >Broducer</a>
+    </div>
+    <div class="navbar-end">
+      <button class="btn btn-ghost font-mono" [routerLink]="'/LoginPage'">Zaloguj się</button>
+    </div>
+  </div>
+
+</ng-container>
+
+  <ng-container *ngIf="isLoggedIn">
+  <div class="navbar bg-neutral-focus font-mono ">
+    <div class="navbar-start ">
+      <div class="dropdown">
+        <label tabindex="0" class="btn btn-ghost btn-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+        </label>
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow font-mono rounded-box w-52 bg-neutral-focus text-white"  >
+          <li><a routerLink="/Home">Strona główna</a></li>
+          <li><a routerLink="/AboutMe" >O mnie</a></li>
+        </ul>
+      </div>
+      
+    </div>
+   
+    <div class="navbar-center right-24 ml-2.5 relative " >
+      
+      <a class="btn btn-ghost normal-case text-xl text-white font-mono " [routerLink]="'/Home'">
+        <img src="./assets/icon-navbar.png" class="w-10 h-10" >Broducer</a>
+    </div>
+  
+    
+    <div class="ml-auto flex items-center">
+      <button class="btn btn-ghost w-16 h-16 ml-8 mr-2">
+        <img alt="shopping-cart" src="/assets/shopping-cart.png" />
+      </button>
+
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+          <div class="w-10 rounded-full">
+            <img alt="avatar" src="/assets/avatar.png" />
+          </div>
+        </label>
+        <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+          <li>
+            <a class="justify-between" [routerLink]="'/ProfilePage'">
+              Profil
+              <span class="badge">Nowe</span>
+            </a>
+          </li>
+          <li><a>Settings</a></li>
+          <li (click)="logout()"><a>Wyloguj</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+ 
+</ng-container>

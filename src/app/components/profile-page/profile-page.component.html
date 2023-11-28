@@ -1,0 +1,51 @@
+<div class="max-w-screen max-h-screen font-mono flex flex-col lg:flex-row items-center mb-96 ">
+    <div class="flex h-fit w-80  lg:ml-10 mt-12 mb-4 justify-center rounded-xl bg-neutral">
+        <div class="flex-col mt-6 text-center ">
+            <div >
+                <button class="btn btn-active btn-ghost w-56 text-white" (click)="changeContent('Dane profilu')">Dane profilu</button>
+               
+            </div>
+            <div class="mt-8">
+                <button class="btn btn-active btn-ghost w-56 text-white" (click)="changeContent('Moja muzyka')">Moja muzyka</button>
+            </div>
+            <div class="mt-8">
+                <button class="btn btn-active btn-ghost w-56 text-white" (click)="changeContent('Dodaj muzyke')">Dodaj muzyke</button>
+            </div>
+            <div class="mt-8 mb-6">
+                <button class="btn btn-active btn-ghost w-56 text-white" (click)="changeContent('Moje zamówienia')">Moje zamówienia</button>
+            </div>
+        </div>
+    </div>
+    <div class="lg:flex lg:mt-6 lg:justify-center lg:w-full ">
+    <div class="lg:w-fit lg:h-fit w-fit h-fit rounded-xl bg-neutral lg:mr-72  p-4">
+        <div class="text-center text-base mt-2 mb-4">
+            {{content}}
+        </div>
+        <div *ngIf="showMyProfile">
+            <div *ngFor="let account of accountData" class="flex-col ml-2 ">
+                <div class="mb-4">
+                 Email: <span class="font-bold">{{account.login}}</span>
+                </div> 
+                <div>
+                 Login: <span class="font-bold">{{account.email}}</span> 
+                </div>
+                <div class="mt-4 mb-2">
+                 Hasło: <span class="font-bold">*******</span> 
+                </div>
+                 
+             </div>
+        </div>
+        <div *ngIf="showMyMusic">
+        <app-my-music>
+
+        </app-my-music>
+        </div>
+        <div *ngIf="showAddMusic" class="relative  flex  justify-center ml-auto mr-auto">
+            <app-add-music >
+
+            </app-add-music>
+        </div>
+        <div *ngIf="showMyOrder"></div>
+    </div>
+</div>
+</div>

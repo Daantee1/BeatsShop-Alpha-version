@@ -1,0 +1,38 @@
+<div class="flex items-center justify-items-center  flex-col mt-16 font-mono">
+    <div class="w-96 h-26 border rounded ring-4 shadow-lg p-2 ">
+      <p class="font-bold text-xl ml-1  text-white">{{title}}</p>
+        <label class="swap mt-3">
+            <input type="checkbox" />
+            <img src="./assets/icon-play.png" class="w-6 h-6" *ngIf="!isPlaying" (click)="startPlaying()">
+            <img src="./assets/icon-pause.png" class="w-6 h-6" *ngIf="isPlaying" (click)="pausePlaying()">
+            <img src="./assets/icon-stop.png" class="w-6 h-6 mt-8"  (click)="stopPlaying()">
+            <img src="./assets/icon-sound-on.png" class="w-6 h-6 mt-16 ml-1 " *ngIf="!isMute" (click)="soundOn()">
+            <img src="./assets/icon-sound-off.png"class="w-6 h-6 mt-16 ml-0.5 mb-8" *ngIf="isMute" (click)="soundOff()">
+            <div class="relative mt-28">
+              <p class=" mt-28 font-bold">Tempo: {{bpm}} bpm</p>
+              <p class="mt-36 font-bold">Klucz: {{key}}</p>
+            </div>
+            
+          
+          <div  id="waveform-{{title}}" class="relative ml-16  w-72 ">
+  
+          </div>
+          
+          </label>
+          <select class="select select-bordered select-info  w-38 mt-2" [(ngModel)]="licenseType" (change)="onLicenseTypeChange()">
+            <option disabled selected>Dostępne licencje:</option>
+            <option title="Licencja gwarantuję bit w .WAV, ale nie na wyłączność">Basic License</option>
+            <option title="Licencja gwarantuję bit w .WAV na wyłączność">Exclusive License</option>
+          </select>
+          <div class="flex items-center justify-between mt-4">
+            
+            <p class="font-semibold  hover:text-yellow-600 cursor-default text-xl  text-white" *ngIf="licenseSelected">Cena: {{price}}zł</p>
+            <span class="cursor-default ml-1" *ngIf="!licenseSelected">Wybierz licencje ⬆️</span>
+            <button class="btn btn-outline btn-error mb-2 " (click)="handleBuyClick()">Dodaj do koszyka</button>
+          </div>
+            
+    </div>
+  
+    
+  </div>
+  

@@ -1,0 +1,13 @@
+<div *ngFor="let song of musicDeatils">
+  <app-beats-player-profile
+  [audioPath]="'./assets/[FREE[ Chill x Guitar Type Beat cigarette  Free Trap  Rap Instrumental 2021.mp3'"
+  [title]= "song.name"
+  [priceB]="song.basic"
+  [priceE]="song.exclusive"
+  [key] = "song.key"
+  [bpm] = "song.bpm"
+  [picture] = "song.picture"
+  
+></app-beats-player-profile>
+</div>
+

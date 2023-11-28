@@ -1,0 +1,92 @@
+<ng-container *ngIf="!addedMusic">
+
+<button class="btn flex mb-1" onclick="my_modal_1.showModal()">Wybierz muzyke</button>
+<small class="ml-2.5 font-bold  ">Utwory tylko w <a class="text-red-800 font-extrabold">.wav</a></small>
+<dialog id="my_modal_1" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Wybierz utwór</h3>
+    <p class="py-4">Wybierz plik z twojego komputera:</p>
+    <div class="modal-action">
+        <input type="file" (change)="handleFileInput($event) " accept=".wav" />
+        
+      <form method="dialog" class="flex mt-16">
+        <button class="btn mr-10" (click)="acceptFile()">Dodaj</button>
+        <button class="btn">Zamknij</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+</ng-container>
+
+
+
+<ng-container *ngIf="addedMusic" >
+<form class="flex-col" (ngSubmit)="addMusic()" #addMusicForm="ngForm">
+  <div class="flex-row mt-2 ml-1">
+    <label for="name">
+      Nazwa utworu:
+    </label>
+    <input type="text" name="name" placeholder="Wpisz nazwę" class="input input-bordered input-info h-6 w-40" [(ngModel)]="musicDetails.name" minlength="3" required/>
+  </div>
+
+
+  <select class="select select-info h-10 w-56 mt-8 ml-1" name="key" [(ngModel)]="musicDetails.key" required>
+    <option disabled selected>Podaj klucz utworu:</option>
+    <option>C</option>
+    <option>C#</option>
+    <option>D</option>
+    <option>D#</option>
+    <option>E</option>
+    <option>F</option>
+    <option>F#</option>
+    <option>G</option>
+    <option>G#</option>
+    <option>A</option>
+    <option>A#</option>
+    <option>B</option>
+    <option>Cm</option>
+    <option>C#m</option>
+    <option>Dm</option>
+    <option>D#m</option>
+    <option>Em</option>
+    <option>Fm</option>
+    <option>F#m</option>
+    <option>Gm</option>
+    <option>G#m</option>
+    <option>Am</option>
+    <option>A#m</option>
+    <option>Bm</option>
+  </select>
+  <div class="flex-row mt-8 ml-1">
+    <label for="bpm"  >
+      Tempo utworu (bpm):
+    </label>
+    <input type="text" name="bpm" placeholder="Wpisz tempo" class=" input input-bordered input-info block h-6 w-40 mt-2" [(ngModel)]="musicDetails.bpm" required/>
+  </div>
+<div class="flex-col mt-8 ml-1">
+  <label for="licenseB"   title="Licencja gwarantuję bit w .WAV, ale nie na wyłączność dla klienta. Możesz sprzedwać ten utwór wielokrotnie.">
+    Licencja Basic:
+  </label>
+  <input type="text"  name="licenseB" placeholder="Wpisz cene" class="input input-bordered input-info h-6 w-40" [(ngModel)]="musicDetails.basic" required />
+  
+</div>
+<div class="flex-col mt-8 ml-1">
+  <label for="licenseE"  title="Licencja gwarantuję bit w .WAV, na wyłączność dla klienta. Utwór możesz sprzedać raz, więc poleca się ustawienie większej kwoty sprzedaży." >
+    Licencja Exlusive:
+  </label>
+  <input type="text" name="licenseE" placeholder="Wpisz cene" class="input input-bordered input-info h-6 w-40 mb-4" [(ngModel)]="musicDetails.exclusive" required/>
+</div>
+  
+<div class="flex-col mt-2 ml-1">
+  <label for="picture"  >
+    Grafika utworu:
+  </label>
+  <input type="file" name="picture" class="file-input file-input-bordered file-input-sm w-full max-w-xs block mt-2 file-input-info" [(ngModel)]="musicDetails.picture" accept=".jpg, .png" required/>
+</div>
+<div class="flex justify-end mt-8 ml-1 ">
+  <button type="submit" class="btn btn-success mr-3 mb-3" [disabled]="!addMusicForm.form.valid"    >Dodaj</button>
+  
+</div>
+</form>
+</ng-container>
+
